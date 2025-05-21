@@ -45,3 +45,7 @@
    8. const dispatch = useDispatch()
    9. useEffect()=>dispatch({type: LOAD_PRODUCTS, payload: data})
    10. Add store to index.js
+10. Create Redux Dependent Components
+    1. create Loading Component
+    2. create Message Box Component
+    3. refactored productActions.js
