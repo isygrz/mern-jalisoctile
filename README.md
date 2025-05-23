@@ -56,3 +56,10 @@
     4. in index.css removed all style for header and set main element to flex and used site-container to create
        full height screen
     5. in index.js we imported 'bootstrap/dist/css/bootstrap.min.css' from bootstrap component
+12. Create Product and Rating Component
+    1. create rating component to render rating based on five stars
+    2. Create product component to render product items in the list
+    3. Use rating component in product component
+    4. import fontawesome in index.html
+    5. set class for btn-primary and rating span in index.css
+    6. changed product list to bootstrap in HomeScreen.js
