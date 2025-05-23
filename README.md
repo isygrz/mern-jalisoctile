@@ -49,3 +49,10 @@
     1. create Loading Component
     2. create Message Box Component
     3. refactored productActions.js
+11. Add bootstrap UI Framework
+    1. npm install react-bootstrap bootstrap react-router-bootstrap
+    2. update App.js by changing header to navbar
+    3. divide screen into three sections (header, main, footer)
+    4. in index.css removed all style for header and set main element to flex and used site-container to create
+       full height screen
+    5. in index.js we imported 'bootstrap/dist/css/bootstrap.min.css' from bootstrap component
