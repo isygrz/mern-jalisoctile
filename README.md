@@ -1,5 +1,15 @@
 # MERN JALISCOTILE
 
+# Tech Stack
+
+1. React 19
+2. Redux for global state management
+3. Redux Thunk for async actions
+4. React Router v6+ for navigation
+5. Bootstrap & React-Bootstrap for UI
+6. Axios for HTTP requests
+7. react-helmet-async for dynamic document titles
+
 # STEPS
 
 1. Introduction
@@ -63,3 +73,31 @@
     4. import fontawesome in index.html
     5. set class for btn-primary and rating span in index.css
     6. changed product list to bootstrap in HomeScreen.js
+13. Create Product Details Screen
+    1. fetch product from backend
+    2. create 3 columns for image, info and action
+    3. Integrated React Helmet for Dynamic Tab Titles
+    4. Installed and configured react-helmet-async
+    5. Implemented title updates for product and home pages
+    6. Resolved Tab Title Not Updating Issue
+    7. Diagnosed React Helmet rendering issues
+    8. Moved <HelmetProvider> to App.js (then later to index.js)
+    9. Used key={titleText} on Helmet to force title updates
+    10. Added fallback titles for loading and error states
+    11. Identified Browser Extensions Interfering With Helmet
+    12. Detected stale or incorrect <title> values in DevTools
+    13. Bypassed Helmet issues using direct document.title updates
+    14. Implemented document.title via useEffect
+    15. Replaced dynamic Helmet logic with useEffect to reliably update browser tab titles
+    16. Applied to ProductScreen.js and HomeScreen.js for consistency
+    17. Cleaned Up Helmet Usage
+    18. Removed redundant <Helmet> usage in App.js
+    19. Disabled <Helmet> in individual screens while retaining it for future SEO flexibility
+    20. Resolved JSX Parsing Errors in App.js
+    21. Wrapped multiple top-level JSX elements using React Fragments (<>...</>)
+    22. Cleaned Up console.log() Usage
+    23. Removed or commented out development logs before production
+    24. Optionally recommended wrapping logs with process.env.NODE_ENV === 'development'
+    25. Maintained Consistent Navigation Title Behavior
+    26. Verified that navigation between Home and Product pages triggers proper title updates
+    27. Addressed race conditions and stale title rendering across route transitions

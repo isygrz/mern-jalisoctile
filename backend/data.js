@@ -1,7 +1,7 @@
 const data = {
   products: [
     {
-      name: 'Signature Bianco Matte Ceramic Subway Wall Tile - 4 x 8 in.',
+      name: 'Matte Ceramic Subway Wall Tile',
       slug: 'signature-bianco-matte-ceramic-subway-wall-tile',
       category: 'Signature Tile',
       image: '/images/product1.jpg',
@@ -10,22 +10,22 @@ const data = {
       brand: 'Bianco',
       rating: 4.5,
       numReviews: 10,
-      description: 'Matte subway wall tile',
+      description: 'Matte subway wall tile - 4 x 8 in.',
     },
     {
-      name: 'Riad White Ceramic Wall Tile - 4 x 4 in.',
+      name: 'White Ceramic Wall Tile',
       slug: 'riad-white-ceramic-wall-tile',
       category: 'Bathroom Tile',
       image: '/images/product2.jpg',
       price: 12.69,
-      countInStock: 10,
+      countInStock: 0,
       brand: 'Riad',
       rating: 4.5,
       numReviews: 8,
-      description: 'Moroccan-inspired white ceramic wall tile',
+      description: 'Moroccan-inspired white ceramic wall tile - 4 x 4 in.',
     },
     {
-      name: 'Mallorca White Ceramic Wall Tile - 2.5 x 8 in.',
+      name: 'White Ceramic Wall Tile',
       slug: 'mallorca-white-ceramic-wall-tile',
       category: 'Fireplace Tile',
       image: '/images/product3.jpg',
@@ -34,10 +34,10 @@ const data = {
       brand: 'Mallorca',
       rating: 4.5,
       numReviews: 10,
-      description: 'Pearlescent subway wall tile',
+      description: 'Pearlescent subway wall tile - 2.5 x 8 in.',
     },
     {
-      name: 'Kasbah Star Bone Porcelain Wall and Floor Tile - 6.5 x 6.5 in.',
+      name: 'Star Bone Porcelain Wall and Floor Tile',
       slug: 'kasbah-star-bone-porcelain-wall-and-floor-tile',
       category: 'Pool Tile',
       image: '/images/product4.jpg',
@@ -46,7 +46,8 @@ const data = {
       brand: 'Kasbah',
       rating: 4.5,
       numReviews: 10,
-      description: 'Moroccan Zellige porcelain wall and floor tile',
+      description:
+        'Moroccan Zellige porcelain wall and floor tile - 6.5 x 6.5 in.',
     },
   ],
 };

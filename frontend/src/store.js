@@ -1,19 +1,25 @@
 import {
-  legacy_createStore,
-  compose,
+  legacy_createStore as createStore,
   applyMiddleware,
   combineReducers,
+  compose,
 } from 'redux';
 import { thunk } from 'redux-thunk';
-import { productListReducer } from './reducers/productReducers';
-//import data from './data';
+import {
+  productListReducer,
+  productDetailsReducer,
+} from './reducers/productReducers';
 
 const initialState = {};
+
 const reducer = combineReducers({
   productList: productListReducer,
+  productDetails: productDetailsReducer,
 });
+
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = legacy_createStore(
+
+const store = createStore(
   reducer,
   initialState,
   composeEnhancer(applyMiddleware(thunk))

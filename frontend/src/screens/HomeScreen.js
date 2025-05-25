@@ -6,6 +6,7 @@ import MessageBox from '../components/MessageBox';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Product from '../components/Product';
+//import { Helmet } from 'react-helmet-async';
 // import { useState } from 'react';
 // import axios from 'axios';
 // import data from '../data';
@@ -19,6 +20,12 @@ export default function HomeScreen() {
     dispatch(listProducts());
   }, [dispatch]);
 
+  // ✅ Set browser tab title when user returns to home
+  useEffect(() => {
+    document.title = 'Jalisco Tile';
+    console.log('🏠 Set document.title to: Jalisco Tile');
+  }, []);
+
   return (
     <div>
       {loading ? (
@@ -27,6 +34,9 @@ export default function HomeScreen() {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <>
+          {/*<Helmet key="home">
+            <title>Jalisco Tile</title>
+          </Helmet>*/}
           <h1>Featured Products</h1>
           <div className="products">
             <Row>
