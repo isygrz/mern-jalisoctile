@@ -25,8 +25,8 @@ const data = {
       description: 'Moroccan-inspired white ceramic wall tile - 4 x 4 in.',
     },
     {
-      name: 'White Ceramic Wall Tile',
-      slug: 'mallorca-white-ceramic-wall-tile',
+      name: 'Pearlescent Ceramic Wall Tile',
+      slug: 'mallorca-pearlescent-ceramic-wall-tile',
       category: 'Fireplace Tile',
       image: '/images/product3.jpg',
       price: 11.79,

@@ -11,7 +11,6 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Rating from '../components/Rating';
-// import { Helmet } from 'react-helmet-async';
 
 function ProductScreen() {
   const params = useParams();
@@ -56,18 +55,6 @@ function ProductScreen() {
 
   return (
     <>
-      {/* <Helmet key={product?.name || 'default'}>
-        <title>
-          {product?.name && !loading && !error
-            ? `${product.name} | Jalisco Tile`
-            : loading
-            ? 'Loading... | Jalisco Tile'
-            : error
-            ? 'Error | Jalisco Tile'
-            : 'Product Details | Jalisco Tile'}
-        </title>
-      </Helmet> */}
-
       {loading ? (
         <LoadingBox />
       ) : error ? (
