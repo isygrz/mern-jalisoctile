@@ -103,22 +103,32 @@
     27. Addressed race conditions and stale title rendering across route transitions
 14. Refactor HomeScreen and ProductScreen for improved state handling and UI
     1. Redux Integration for Product Fetching
-    1. Used useDispatch to trigger the listProducts() action when the component mounts.
-    1. Used useSelector to extract loading, error, and products state from the Redux store (state.productList).
-    1. Loading and Error Handling UI
-    1. Displayed a <LoadingBox /> component while products are being fetched.
-    1. Displayed a <MessageBox variant="danger"> component if an error occurred during product retrieval.
-    1. Displayed the product grid (<Row>) only if the fetch was successful and no errors were present.
-    1. Improved Tab Title Management
-    1. Added a useEffect hook to immediately set the browser tab title using document.title = 'Jalisco Tile' for quick responsiveness when navigating to the home screen.
-    1. Included a <Helmet><title>Jalisco Tile</title></Helmet> block for SEO and metadata injection support.
-    1. Cleaned Up JSX and Conditional Rendering
-    1. Ensured JSX elements are correctly opened and closed.
-    1. Replaced any malformed or commented-out logic blocks.
-    1. Used clear conditional rendering inside the return() block for better readability and maintenance.
-    1. Responsiveness and Layout
-    1. Used react-bootstrap's <Row> and <Col> to render the product grid in a responsive layout across different screen sizes (sm, md, lg).
-    1. Code Refactoring and Readability
-    1. Removed unused imports and commented-out code.
-    1. Separated logic concerns (data fetching, title setting, rendering) clearly in the component.
-    1. Followed functional component best practices using React Hooks (useEffect, useDispatch, useSelector).
+    2. Used useDispatch to trigger the listProducts() action when the component mounts.
+    3. Used useSelector to extract loading, error, and products state from the Redux store (state.productList).
+    4. Loading and Error Handling UI
+    5. Displayed a <LoadingBox /> component while products are being fetched.
+    6. Displayed a <MessageBox variant="danger"> component if an error occurred during product retrieval.
+    7. Displayed the product grid (<Row>) only if the fetch was successful and no errors were present.
+    8. Improved Tab Title Management
+    9. Added a useEffect hook to immediately set the browser tab title using document.title = 'Jalisco Tile' for quick responsiveness when navigating to the home screen.
+    10. Included a <Helmet><title>Jalisco Tile</title></Helmet> block for SEO and metadata injection support.
+    11. Cleaned Up JSX and Conditional Rendering
+    12. Ensured JSX elements are correctly opened and closed.
+    13. Replaced any malformed or commented-out logic blocks.
+    14. Used clear conditional rendering inside the return() block for better readability and maintenance.
+    15. Responsiveness and Layout
+    16. Used react-bootstrap's <Row> and <Col> to render the product grid in a responsive layout across different screen sizes (sm, md, lg).
+    17. Code Refactoring and Readability
+    18. Removed unused imports and commented-out code.
+    19. Separated logic concerns (data fetching, title setting, rendering) clearly in the component.
+    20. Followed functional component best practices using React Hooks (useEffect, useDispatch, useSelector).
+15. Handle Add To Cart Button
+    1. Added missing item to seed data
+    2. Implemented product details route API
+    3. Added Cart screen route: and defined cart route with optional ':id?'
+    4. Integrated and registered cart reducer
+    5. Implemented addToCart async action, fetches product data and dispatch CART_ADD_ITEM; updates cart in localStorage
+    6. Enhanced API handling in detailsProduct; introduced const response = await axios.get(...) to access and log Axios response object before extracting data.
+    7. Implemented cartReducer logic; added reducer to manage cart state; updates existing items or appends new ones based on \_id.
+    8. Added cartScreen logic; handles addToCart dispatch via useEffect, parses quantity from URL, and displays cart items with fallback for empty state.
+    9. Refactored ProductScreen.js; introduced qty state and addToCartHandler with dynamic cart routing; streamlined effects and logging for maintainability and better user navigation.

@@ -20,10 +20,12 @@ export const listProducts = () => async (dispatch) => {
 
 export const detailsProduct = (slug) => async (dispatch) => {
   dispatch({ type: PRODUCT_DETAILS_REQUEST });
-  console.log('📦 Dispatching PRODUCT_DETAILS_REQUEST for slug:', slug);
   try {
-    const { data } = await axios.get(`/api/products/slug/${slug}`);
-    console.log('✅ API returned product:', data);
+    const response = await axios.get(`/api/products/slug/${slug}`);
+    console.log('📦 Raw Axios response:', response);
+    const { data } = response;
+    console.log('✅ Extracted data from response:', data);
+
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     console.error('❌ API failed to fetch product:', error);

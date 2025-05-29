@@ -1,6 +1,7 @@
 import { Route, Routes, Link } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
+import CartScreen from './screens/CartScreen';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { Helmet } from 'react-helmet-async';
@@ -31,6 +32,7 @@ function App() {
         <main>
           <Container className="mt-3">
             <Routes>
+              <Route path="/cart/:id?" element={<CartScreen />} />
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/" element={<HomeScreen />} />
             </Routes>

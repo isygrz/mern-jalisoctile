@@ -1,6 +1,7 @@
 const data = {
   products: [
     {
+      _id: '1',
       name: 'Matte Ceramic Subway Wall Tile',
       slug: 'signature-bianco-matte-ceramic-subway-wall-tile',
       category: 'Signature Tile',
@@ -13,6 +14,7 @@ const data = {
       description: 'Matte subway wall tile - 4 x 8 in.',
     },
     {
+      _id: '2',
       name: 'White Ceramic Wall Tile',
       slug: 'riad-white-ceramic-wall-tile',
       category: 'Bathroom Tile',
@@ -25,6 +27,7 @@ const data = {
       description: 'Moroccan-inspired white ceramic wall tile - 4 x 4 in.',
     },
     {
+      _id: '3',
       name: 'Pearlescent Ceramic Wall Tile',
       slug: 'mallorca-pearlescent-ceramic-wall-tile',
       category: 'Fireplace Tile',
@@ -37,6 +40,7 @@ const data = {
       description: 'Pearlescent subway wall tile - 2.5 x 8 in.',
     },
     {
+      _id: '4',
       name: 'Star Bone Porcelain Wall and Floor Tile',
       slug: 'kasbah-star-bone-porcelain-wall-and-floor-tile',
       category: 'Pool Tile',
