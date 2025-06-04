@@ -11,7 +11,16 @@ import {
 } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
 
-const initialState = {};
+// ✅ Load cart items from localStorage, if available
+const cartItemsFromStorage = localStorage.getItem('cartItems')
+  ? JSON.parse(localStorage.getItem('cartItems'))
+  : [];
+
+const initialState = {
+  cart: {
+    cartItems: cartItemsFromStorage,
+  },
+};
 
 const reducer = combineReducers({
   productList: productListReducer,
@@ -21,10 +30,10 @@ const reducer = combineReducers({
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(
+const Store = createStore(
   reducer,
   initialState,
   composeEnhancer(applyMiddleware(thunk))
 );
 
-export default store;
+export default Store;

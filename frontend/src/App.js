@@ -4,16 +4,13 @@ import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
 import { Helmet } from 'react-helmet-async';
-//import { LinkContainer } from 'react-router-bootstrap';
-//import logo from './logo.svg';
-//import './App.css';
-//import data from './data';
+import HoverCartPanel from './components/HoverCartPanel'; // ✅ NEW component
 
 function App() {
   return (
     <>
-      {/* Set default/fallback tab title and structure */}
       <Helmet>
         <title defaultTitle="Jalisco Tile" titleTemplate="%s | Jalisco Tile" />
       </Helmet>
@@ -25,6 +22,9 @@ function App() {
               <Navbar.Brand as={Link} to="/">
                 Jalisco Tile
               </Navbar.Brand>
+              <Nav className="ms-auto">
+                <HoverCartPanel /> {/* ✅ Use new component */}
+              </Nav>
             </Container>
           </Navbar>
         </header>

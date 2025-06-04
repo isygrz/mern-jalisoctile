@@ -1,3 +1,6 @@
+/* --------------------------------
+  GLOBAL STYLES
+-------------------------------- */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,24 +9,82 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .site-container {
   min-height: 100vh;
 }
 main {
   flex: 1;
 }
-.btn-primary {
-  background-color: #f0c040;
-  color: #000000;
+
+/* --------------------------------
+  HEADER / CART HOVER PANEL
+-------------------------------- */
+.hover-cart-container {
+  position: relative;
+  display: inline-block;
 }
+
+.cart-hover-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 250px;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.panel-closed {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  padding: 0 1rem; /* prevent shifting */
+}
+
+.panel-open {
+  max-height: 500px; /* adjust as needed */
+  opacity: 1;
+}
+
+.cart-icon {
+  font-size: 1.4rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -18px;
+  background-color: red;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+  box-shadow: 0 0 0 2px white; /* adds border contrast */
+}
+
+/* --------------------------------
+  PRODUCT LIST / CARDS
+-------------------------------- */
 .products {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.rating span {
-  color: #ffc000;
+.product-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 .product {
@@ -41,13 +102,58 @@ main {
   max-width: 100%;
 }
 
-/*Alert*/
-.success {
-  color: #20a020;
+/* --------------------------------
+  CART ITEM STYLES
+-------------------------------- */
+.cart-item-container {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-right: 10px;
+  min-width: 20px;
 }
-.error {
-  color: #a02020;
+
+.cart-item-index {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-right: 10px;
+  min-width: 20px;
 }
+
+.img-thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+}
+
+/* --------------------------------
+  BUTTONS / ALERTS / STYLING
+-------------------------------- */
+.btn-primary {
+  background-color: #f0c040;
+  color: #000000;
+}
+
+.sample-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border: 0.1rem solid #000;
+  border-radius: 2rem;
+  background-color: white;
+  color: #000;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+}
+
+.rating span {
+  color: #ffc000;
+}
+
+/* Alerts */
 .alert {
   padding: 1rem;
   border: 0.1rem solid transparent;
@@ -60,4 +166,13 @@ main {
 .alert-danger {
   color: #a02020;
   background-color: #ffe0e0e0;
+}
+.success {
+  color: #20a020;
+}
+.error {
+  color: #a02020;
+}
+.error-message {
+  text-align: center;
 }

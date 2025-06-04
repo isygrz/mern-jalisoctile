@@ -1,19 +1,54 @@
 import axios from 'axios';
 
-export const addToCart = (productId, qty) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/products/${productId}`);
+// Utility to persist cart state
+const saveCartToStorage = (cartItems) => {
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+};
 
+export const addToCart =
+  (productId, qty, options = {}) =>
+  async (dispatch, getState) => {
+    const { data } = await axios.get(`/api/products/${productId}`);
+
+    const isSample = options.isSample || false;
+    const priceToUse =
+      typeof options.samplePrice === 'number'
+        ? options.samplePrice
+        : data.price;
+
+    dispatch({
+      type: 'CART_ADD_ITEM',
+      payload: {
+        _id: data._id,
+        name: options.name || data.name,
+        slug: options.slug || data.slug,
+        image: options.image || data.image,
+        price: priceToUse,
+        countInStock: data.countInStock,
+        qty,
+        isSample,
+        samplePrice: options.samplePrice,
+        isSampleOf: options.isSampleOf,
+      },
+    });
+
+    saveCartToStorage(getState().cart.cartItems);
+  };
+
+export const removeFromCart = (id) => (dispatch, getState) => {
   dispatch({
-    type: 'CART_ADD_ITEM',
-    payload: {
-      _id: data._id,
-      name: data.name,
-      image: data.image,
-      price: data.price,
-      countInStock: data.countInStock,
-      qty,
-    },
+    type: 'CART_REMOVE_ITEM',
+    payload: id,
   });
 
-  localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
+  saveCartToStorage(getState().cart.cartItems);
+};
+
+export const updateCartQuantity = (id, qty) => (dispatch, getState) => {
+  dispatch({
+    type: 'CART_UPDATE_ITEM_QTY',
+    payload: { id, qty },
+  });
+
+  saveCartToStorage(getState().cart.cartItems);
 };
