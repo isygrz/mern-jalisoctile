@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import { Helmet } from 'react-helmet-async';
 import HoverCartPanel from './components/HoverCartPanel'; // ✅ NEW component
+import SigninScreen from './screens/SigninScreen';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Container className="mt-3">
             <Routes>
               <Route path="/cart/:id?" element={<CartScreen />} />
+              <Route path="/signin" element={<SigninScreen />} />
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/" element={<HomeScreen />} />
             </Routes>

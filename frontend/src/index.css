@@ -129,6 +129,10 @@ main {
   border: 1px solid #ddd;
 }
 
+.small-container {
+  max-width: 600px;
+}
+
 /* --------------------------------
   BUTTONS / ALERTS / STYLING
 -------------------------------- */

@@ -1,23 +1,20 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Form from 'react-bootstrap/Form';
+import { Link, useNavigate } from 'react-router-dom';
+import { Row, Col, ListGroup, Button, Card, Form } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import MessageBox from '../components/MessageBox';
+
 import { removeFromCart, updateCartQuantity } from '../actions/cartActions';
+import MessageBox from '../components/MessageBox';
+import Breadcrumbs from '../components/Breadcrumbs'; // ✅ Optional if implemented
 
 export default function CartScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cartItems } = useSelector((state) => state.cart);
 
-  const updateQuantity = (item, newQty) => {
-    dispatch(updateCartQuantity(item._id, newQty));
+  const updateQuantity = (item, qty) => {
+    dispatch(updateCartQuantity(item._id, qty));
   };
 
   const removeFromCartHandler = (id) => {
@@ -31,19 +28,27 @@ export default function CartScreen() {
   const getItemPrice = (item) =>
     typeof item.samplePrice === 'number' ? item.samplePrice : item.price;
 
+  const subtotal = cartItems.reduce((a, c) => {
+    const price = getItemPrice(c);
+    return a + (typeof price === 'number' ? price * c.qty : 0);
+  }, 0);
+
   return (
     <div>
       <Helmet>
         <title>Shopping Cart</title>
       </Helmet>
+
+      <Breadcrumbs extraCrumbs={[{ path: '/cart', label: 'Cart' }]} />
+
       <h1>Shopping Cart</h1>
       <Row>
         <Col md={8}>
           {cartItems.length === 0 ? (
             <MessageBox>
               <div className="text-center">
-                <strong>YOUR CART IS EMPTY</strong>
-                <div style={{ marginTop: '1rem' }}>
+                <strong>Your cart is empty</strong>
+                <div className="mt-3">
                   <Link to="/" className="btn btn-outline-primary">
                     Browse Products
                   </Link>
@@ -54,17 +59,21 @@ export default function CartScreen() {
             <ListGroup>
               {cartItems.map((item, index) => {
                 const price = getItemPrice(item);
-
                 return (
                   <ListGroup.Item key={item._id}>
                     <Row className="align-items-center">
                       <Col md={4}>
-                        <div className="cart-item-container">
-                          <div className="cart-item-index">{index + 1}.</div>
+                        <div className="d-flex align-items-center gap-2">
+                          <span className="text-muted">{index + 1}.</span>
                           <img
                             src={item.image}
                             alt={item.name}
                             className="img-thumbnail"
+                            style={{
+                              width: '60px',
+                              height: '60px',
+                              objectFit: 'cover',
+                            }}
                           />
                           <div>
                             {item.isSample ? (
@@ -85,7 +94,7 @@ export default function CartScreen() {
 
                       <Col md={3}>
                         <Form.Group className="d-flex align-items-center">
-                          {/* Mobile-only minus button */}
+                          {/* Mobile minus button */}
                           <div className="d-flex d-md-none">
                             <Button
                               variant="light"
@@ -96,7 +105,7 @@ export default function CartScreen() {
                             </Button>
                           </div>
 
-                          {/* Quantity input (visible always) */}
+                          {/* Quantity input */}
                           <Form.Control
                             type="number"
                             value={item.qty}
@@ -115,7 +124,7 @@ export default function CartScreen() {
                             }}
                           />
 
-                          {/* Mobile-only plus button */}
+                          {/* Mobile plus button */}
                           <div className="d-flex d-md-none">
                             <Button
                               variant="light"
@@ -133,9 +142,11 @@ export default function CartScreen() {
                               Only {item.countInStock} in stock
                             </div>
                             <div className="alert alert-info mt-1 p-2 small">
-                              Ordering in bulk? Contact our{' '}
-                              <Link to="/contact">Wholesale Team</Link> for
-                              assistance.
+                              Ordering in bulk?{' '}
+                              <Link to="/contact">
+                                Contact our wholesale team
+                              </Link>
+                              .
                             </div>
                           </>
                         )}
@@ -167,16 +178,8 @@ export default function CartScreen() {
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <h3>
-                    Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items)
-                    : $
-                    {cartItems
-                      .reduce((a, c) => {
-                        const price = getItemPrice(c);
-                        return (
-                          a + (typeof price === 'number' ? price * c.qty : 0)
-                        );
-                      }, 0)
-                      .toFixed(2)}
+                    Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items):
+                    ${subtotal.toFixed(2)}
                   </h3>
                 </ListGroup.Item>
                 <ListGroup.Item>
